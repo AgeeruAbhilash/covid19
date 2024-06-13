@@ -112,6 +112,7 @@ def submit_data():
         # Convert input data to array for model prediction
         input_data = np.array([sequencing_batch_encoded, gender_encoded, age, sc2_pcr_encoded, SC2_rpm], dtype=float).reshape(1, -1)
 
+        input_data=sc.transfomr(input_data)
         # Predict using the SVM model
         prediction = model.predict(input_data)[0]
 
