@@ -10,9 +10,8 @@ from sklearn.ensemble import RandomForestClassifier
 app = Flask(__name__)
 
 import pandas as pd
-import os
-file_path = os.path.join(os.path.dirname(__file__), 'data', 'Dataset.csv')
-data=pd.read_csv(r"https://github.com/AgeeruAbhilash/covid19/blob/main/Dataset.csv")
+
+data=pd.read_csv(r"Dataset.csv")
 data
 le=LabelEncoder()
 
