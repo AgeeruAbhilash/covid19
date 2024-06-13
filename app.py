@@ -3,12 +3,47 @@ import sqlite3
 import numpy as np
 import joblib
 from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
 
 app = Flask(__name__)
 
-# Load the model
-with open('SVC_model.pkl', 'rb') as model_file:
-    model = joblib.load(model_file)
+# # Load the model
+# with open('SVC_model.pkl', 'rb') as model_file:
+#     model = joblib.load(model_file)
+
+
+import pandas as pd
+data=pd.read_csv(r"C:\Users\abhil\OneDrive\Desktop\covid\Dataset.csv")
+data
+le=LabelEncoder()
+
+data=data.drop('idseq_sample_name',axis=1)
+
+data=data.drop('CZB_ID',axis=1)
+
+data['viral_status']=  le.fit_transform(data['viral_status'])
+data['sequencing_batch']=le.fit_transform(data['sequencing_batch'])
+data['gender']=le.fit_transform(data['gender'])
+
+data['SC2_PCR']=le.fit_transform(data['SC2_PCR'])
+
+
+X=data.iloc[:,0:5]
+X
+y=data.iloc[:,-1]
+y
+
+
+X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.30,random_state=77)
+sc=StandardScaler()
+X_train=sc.fit_transform(X_train)
+X_test=sc.fit_transform(X_test)
+
+model = RandomForestClassifier()
+model.fit(X,y)
+
 
 # Create label encoders for gender, SC2_PCR, and sequencing_batch
 gender_le = LabelEncoder()
