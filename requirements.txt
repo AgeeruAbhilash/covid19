@@ -85,8 +85,7 @@ qtconsole==5.4.4
 QtPy==2.4.1
 requests==2.31.0
 rich==13.7.1
-scikit-learn
-scipy==1.7.3
+scikit-learn==1.2.1
 seaborn==0.12.2
 Send2Trash==1.8.3
 six==1.16.0
