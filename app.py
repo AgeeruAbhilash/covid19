@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 
 app = Flask(__name__)
-
+'''
 import pandas as pd
 
 data=pd.read_csv(r"Dataset.csv")
@@ -40,7 +40,8 @@ X_test=sc.fit_transform(X_test)
 model = RandomForestClassifier()
 model.fit(X,y)
 
-
+'''
+model=np.load('SVC_model.npy', allow_pickle=True).item()
 # Create label encoders for gender, SC2_PCR, and sequencing_batch
 gender_le = LabelEncoder()
 gender_le.fit(["male", "female", "other"])
