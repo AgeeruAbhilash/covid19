@@ -1,18 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 import numpy as np
-import joblib
+
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 
 app = Flask(__name__)
-
-# # Load the model
-# with open('SVC_model.pkl', 'rb') as model_file:
-#     model = joblib.load(model_file)
-
 
 import pandas as pd
 data=pd.read_csv(r"C:\Users\abhil\OneDrive\Desktop\covid\Dataset.csv")
