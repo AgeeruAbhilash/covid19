@@ -1,5 +1,5 @@
 Flask
 pandas
-numpy==1.19.2
+numpy ==1.19.2
 scikit-learn
 gunicorn
